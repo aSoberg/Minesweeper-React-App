@@ -126,4 +126,4 @@ const GameBoard = ({ size, bombCount }) => {
       <Button title="New Game" onPress={newGame} />
     </View>
   );
-
+}
