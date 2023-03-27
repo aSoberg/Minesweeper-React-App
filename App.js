@@ -8,10 +8,13 @@ const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
-    // The Stack Navigator is not needed here but will likely be useful during the assignment.
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={GameBoard} />
+        <Stack.Screen
+          name="Home"
+          component={GameBoard}
+          initialParams={{ width: 10, height: 10, bombCount: 10 }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
