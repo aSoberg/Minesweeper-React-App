@@ -15,5 +15,7 @@ You can use whatever tools you want, but I use npm and am currently using an And
 From the root directory run the following commands
  ```
  npm install
+ ```
+ ```
  npm run android
  ```
