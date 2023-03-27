@@ -6,7 +6,7 @@ const Cell = ({ value, revealed, flagged, onPress, onLongPress }) => {
     if (flagged) {
       return 'F';
     } else if (revealed) {
-      return value === -1 ? 'B' : value === 0 ? '' : value;
+      return value === -1 ? 'B' : value === 0 ? ' ' : value;
     } else {
       return '';
     }

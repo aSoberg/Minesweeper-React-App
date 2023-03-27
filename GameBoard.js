@@ -95,8 +95,8 @@ const GameBoard = ({ navigation, route }) => {
     setGrid(newGrid);
   };
 
-  const revealCell = (grid, row, col) => {
-  if (row < 0 || row >= this.height || col < 0 || col >= this.width) {
+  const revealCell = (grid, col, row) => {
+  if (row < 0 || row >= this.height - 1 || col < 0 || col >= this.width - 1) {
     // Cell is out of bounds, so do nothing
     return;
   }
@@ -114,14 +114,14 @@ const GameBoard = ({ navigation, route }) => {
 
   // If the cell is empty, reveal its neighbors
   if (cell.value === 0) {
-    revealCell(row - 1, col - 1);
-    revealCell(row - 1, col);
-    revealCell(row - 1, col + 1);
-    revealCell(row, col - 1);
-    revealCell(row, col + 1);
-    revealCell(row + 1, col - 1);
-    revealCell(row + 1, col);
-    revealCell(row + 1, col + 1);
+    revealCell(grid, row - 1, col - 1);
+    revealCell(grid, row - 1, col);
+    revealCell(grid, row - 1, col + 1);
+    revealCell(grid, row, col - 1);
+    revealCell(grid, row, col + 1);
+    revealCell(grid, row + 1, col - 1);
+    revealCell(grid, row + 1, col);
+    revealCell(grid, row + 1, col + 1);
   }
 };
 
