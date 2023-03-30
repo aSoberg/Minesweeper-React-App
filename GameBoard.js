@@ -79,7 +79,8 @@ const GameBoard = ({ navigation, route }) => {
 
     if (checkWin(newGrid)) {
       setGameState('won');
-      navigation.navigate('GameWon');
+      alert("Game Won!")
+//      navigation.navigate('GameWon');
     }
 
     setGrid(newGrid);
@@ -126,23 +127,19 @@ const revealCell = (grid, x, y) => {
 
   checkWin = () => {
         let revealedCount = 0;
-        let bombCount = 0;
 
-        for (let i = 0; i < this.width; i++) {
-          for (let j = 0; j < this.height; j++) {
-            if (this.grid[i][j].revealed) {
+        for (let i = 0; i < width; i++) {
+          for (let j = 0; j < height; j++) {
+            if (grid[i][j].revealed) {
               revealedCount++;
-            }
-            if (this.grid[i][j].value === -1) {
-              bombCount++;
             }
           }
         }
 
-        if (revealedCount === this.gridSize ** 2 - bombCount) {
+        if (revealedCount == width * height - bombCount) {
           return true;
 //          this.showBombs();
-          alert("You won!");
+          alert(width * height - bombCount);
         }
     }
 
