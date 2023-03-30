@@ -82,7 +82,7 @@ const GameBoard = ({ navigation, route }) => {
       navigation.navigate('GameWon');
     }
 
-   // setGrid(newGrid);
+    setGrid(newGrid);
   };
 
   const handleCellLongPress = (x, y) => {
@@ -95,33 +95,31 @@ const GameBoard = ({ navigation, route }) => {
     setGrid(newGrid);
   };
 
-  const revealCell = (grid, col, row) => {
-  if (row < 0 || row >= this.height - 1 || col < 0 || col >= this.width - 1) {
+const revealCell = (grid, x, y) => {
+  if (y < 0 || y >= height || x < 0 || x >= width) {
     // Cell is out of bounds, so do nothing
     return;
   }
 
-  const cell = grid[row][col];
+  const cell = grid[y][x];
   if (cell.revealed || cell.flagged || cell.value === -1) {
     // Cell is already revealed or flagged or contains a bomb, so do nothing
     return;
   }
 
   // Reveal the cell
-  const newGrid = [...grid];
-  newGrid[row][col].revealed = true;
-  setGrid(newGrid);
+  grid[y][x].revealed = true;
 
   // If the cell is empty, reveal its neighbors
   if (cell.value === 0) {
-    revealCell(grid, row - 1, col - 1);
-    revealCell(grid, row - 1, col);
-    revealCell(grid, row - 1, col + 1);
-    revealCell(grid, row, col - 1);
-    revealCell(grid, row, col + 1);
-    revealCell(grid, row + 1, col - 1);
-    revealCell(grid, row + 1, col);
-    revealCell(grid, row + 1, col + 1);
+    revealCell(grid, x - 1, y - 1);
+    revealCell(grid, x - 1, y);
+    revealCell(grid, x - 1, y + 1);
+    revealCell(grid, x, y - 1);
+    revealCell(grid, x, y + 1);
+    revealCell(grid, x + 1, y - 1);
+    revealCell(grid, x + 1, y);
+    revealCell(grid, x + 1, y + 1);
   }
 };
 
@@ -147,7 +145,6 @@ const GameBoard = ({ navigation, route }) => {
           alert("You won!");
         }
     }
-
 
   const renderCell = (x, y) => {
     let cell = grid[y][x];
