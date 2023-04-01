@@ -71,7 +71,7 @@ const GameBoard = ({ navigation, route }) => {
       setGameState('lost');
       newGrid[y][x].revealed = true;
       setGrid(newGrid);
-      navigation.navigate('GameLost');
+//      navigation.navigate('GameLost');
       return;
     }
 

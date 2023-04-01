@@ -13,7 +13,7 @@ const Cell = ({ value, revealed, flagged, onPress, onLongPress }) => {
   };
 
   return (
-    <TouchableOpacity style={styles.container} onPress={onPress} onLongPress={onLongPress}>
+    <TouchableOpacity style={[styles.container, revealed ? styles.revealed : styles.hidden]} onPress={onPress} onLongPress={onLongPress}>
       <Text style={[styles.content, revealed && styles.revealed, flagged && styles.flagged]}>{renderContent()}</Text>
     </TouchableOpacity>
   );
@@ -25,13 +25,15 @@ const styles = StyleSheet.create({
     height: 30,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#ccc',
     borderWidth: 1,
     borderColor: '#999',
   },
   content: {
     fontSize: 20,
     fontWeight: 'bold',
+  },
+  hidden: {
+    backgroundColor: '#ccc'
   },
   revealed: {
     backgroundColor: '#fff',
